@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!-- Added h-100 to html, body and the div in the container to make the space cover the whole page. -->
+<html class="h-100">
+
+<head>
+    <title>MiCafe</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body class="container-fluid px-0 h-100">
+    <!-- Added fixed-top to remove the navbar from the normal flow of the page so 
+    that the Place Order button can truly be centered, since it now is in a space
+    that represents the viewport instead of the space under the navbar. -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-warning fixed-top">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand">MiCafe</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="d-flex justify-content-center align-items-center h-100">
+        <div>
+            <button class="btn btn-success btn-lg rounded" onclick="placeOrder()">Place Order</button>
+        </div>
+    </div>
+</body>
+<script src="billCalculator.js"></script>
+
+</html>
