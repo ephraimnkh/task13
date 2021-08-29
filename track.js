@@ -33,7 +33,7 @@ function Track(artist, title, album, genre) {
 }
 
 function performAction(action) {
-    if (document.getElementById("favoriteTracks")) removeTrackDisplay();
+    removeTrackDisplay();
     // Add new track to array and update session storage.
     if (action === 'add') {
         let newTrack = new Track(artist.value, title.value, album.value, genre.value);
@@ -97,7 +97,7 @@ function addTrackInfo() {
         title.value = track.title;
         album.value = track.album;
         genre.value = track.genre;
-    } else clearFormFields();
+    } else clearFormFields(formFunction);
 }
 
 // Updates the list of tracks.
@@ -144,11 +144,12 @@ function updateSessionStorage(array) {
 // so there isn't multiple track displays on screen when the update creates a 
 // new ordered list to display tracks.
 function removeTrackDisplay() {
-    document.getElementById("favoriteTracks").remove();
+    // Check if the display even exists yet before removing.
+    if (document.getElementById("favoriteTracks")) document.getElementById("favoriteTracks").remove();
 }
 
-function clearFormFields() {
-    trackID.value = "";
+function clearFormFields(formFunction) {
+    if (formFunction !== 'update') trackID.value = "";
     artist.value = "";
     title.value = "";
     album.value = "";
