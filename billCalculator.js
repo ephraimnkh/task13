@@ -85,6 +85,7 @@ getListInput = (promptText, failedPromptText, optionList) => {
         let addItem = isNumber(item) && isWithinRange(item, optionList) ? true : false;
         if (addItem) total += optionList[item - 1][1];
         else {
+            // Reset item so loop runs again.
             item = "";
             text = buildPromptText(failedPromptText, optionList);
         }
@@ -103,8 +104,9 @@ getInput = (promptText, failedPromptText) => {
         let addValue = isNumber(value) ? true : false;
         if (addValue) total += parseInt(value);
         else {
-            text = failedPromptText;
+            // Reset value so loop runs again.
             value = "";
+            text = failedPromptText;
         };
     }
 }
