@@ -29,21 +29,18 @@ placeOrder = () => {
 }
 
 // Returns whether a value is a number or not by specifying true|false.
-isNumber = (value) => {
-    return !Number.isNaN(value);
-}
+isNumber = value => !isNaN(value);
+
 
 // Returns whether an index is within the range of valid indices for an array by specifying true|false.
-isWithinRange = (index, array) => {
-    return index >= 1 && index <= array.length;
-}
+isWithinRange = (index, array) => index >= 1 && index <= array.length;
 
 // Generates Prompt Text by taking in main text and adding a list of items below the main text.
 // The result is returned.
 buildPromptText = (promptText, optionList) => {
     let text = promptText;
     optionList.forEach((item, index) => {
-        text += `\n${index + 1}. ${item[0]}`;
+        text += `\n${index + 1}. ${item[0]} - R${item[1]}`;
     });
     return text;
 }
@@ -54,7 +51,7 @@ buildPromptText = (promptText, optionList) => {
 // and the value at index 1 being the price of the item
 // Being the value assigned to the object key.
 // The array of items is returned by this function.
-buildItemListFromObject = (obj) => {
+buildItemListFromObject = obj => {
     let array = [];
     for (item in obj) {
         let itemNameBuilder = "";
@@ -105,6 +102,9 @@ getInput = (promptText, failedPromptText) => {
         if (value === null) break;
         let addValue = isNumber(value) ? true : false;
         if (addValue) total += parseInt(value);
-        else text = failedPromptText;
+        else {
+            text = failedPromptText;
+            value = "";
+        };
     }
 }
